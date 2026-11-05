@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SYROX Website Builder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo">SYROX<span>.</span></div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#builder">AI Builder</a>
+      <a href="#services">Services</a>
+    </nav>
+    <button class="login">Get Started</button>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <p class="tag">AI POWERED WEBSITE CREATOR</p>
+
+      <h1>Create Your Website<br>
+        <span>With AI</span>
+      </h1>
+
+      <p class="description">
+        Turn your ideas into professional websites.
+        No coding skills required.
+      </p>
+
+      <div id="builder" class="builder-box">
+        <textarea id="idea"
+          placeholder="Describe your website idea..."></textarea>
+
+        <button id="generate">Generate Website ?</button>
+      </div>
+
+      <p id="status">Free preview available</p>
+    </section>
+  </main>
+
+<section id="preview-section" class="preview-section">
+  <h2>Your Website Preview</h2>
+  <p>Your generated website will appear here.</p>
+
+  <iframe
+    id="website-preview"
+    title="Generated Website Preview">
+  </iframe>
+<br><br>
+<button id="download-website">
+  Download Website ?
+</button>
+</section>
+
+  <footer id="services">
+    © 2026 SYROX Website Builder
+    <br>Built for a smarter tomorrow.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

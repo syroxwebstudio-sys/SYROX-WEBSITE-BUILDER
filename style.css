@@ -1,0 +1,143 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f7f9fc;
+  color: #172033;
+}
+
+header {
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8%;
+  background: white;
+  border-bottom: 1px solid #e8edf4;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.preview-section {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 25px;
+  text-align: center;
+}
+
+.preview-section h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.preview-section p {
+  color: #69758a;
+  margin-bottom: 20px;
+}
+
+#website-preview {
+  width: 100%;
+  height: 450px;
+  border: 1px solid #dce3ed;
+  border-radius: 12px;
+  background: white;
+}
+#download-website {
+  background: #172033;
+  color: white;
+  border: none;
+  padding: 13px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+#download-website:hover {
+  background: #2878ed;
+}
+
+.logo span {
+  color: #3985f6;
+}
+
+nav a {
+  text-decoration: none;
+  color: #536078;
+  margin: 0 15px;
+}
+
+.login, #generate {
+  background: #2878ed;
+  color: white;
+  border: none;
+  padding: 13px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.hero {
+  text-align: center;
+  padding: 110px 20px;
+}
+
+.tag {
+  color: #2878ed;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+h1 {
+  font-size: 55px;
+  margin: 25px 0;
+}
+
+h1 span {
+  color: #2878ed;
+}
+
+.description {
+  color: #69758a;
+  line-height: 1.8;
+}
+
+.builder-box {
+  max-width: 650px;
+  margin: 35px auto 15px;
+  padding: 15px;
+  background: white;
+  border: 1px solid #e1e7f0;
+  border-radius: 13px;
+  box-shadow: 0 10px 35px #152d4d10;
+}
+
+textarea {
+  width: 100%;
+  height: 110px;
+  border: none;
+  outline: none;
+  resize: vertical;
+  padding: 12px;
+  font-size: 15px;
+  font-family: Arial;
+}
+
+#status {
+  color: #8490a4;
+  font-size: 13px;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #8490a4;
+  font-size: 13px;
+}
