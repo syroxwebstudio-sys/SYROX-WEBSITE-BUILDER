@@ -98,6 +98,7 @@ Requirements:
 
   generateButton.disabled = true;
   downloadButton.disabled = true;
+  zipButton.disabled = true;
   editButton.disabled = true;
 
   statusText.textContent = "SYROX AI is creating your website...";
@@ -111,6 +112,7 @@ Requirements:
     preview.srcdoc = generatedHTML;
 
     downloadButton.disabled = false;
+    zipButton.disabled = false;
     editButton.disabled = false;
 
     statusText.textContent = "Your website is ready!";
