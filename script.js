@@ -157,7 +157,6 @@ mobileButton.addEventListener("click", function () {
 // AI WEBSITE EDITING
 
 editButton.addEventListener("click", async function () {
-
   const instruction = editPrompt.value.trim();
 
   if (!generatedHTML) {
@@ -170,48 +169,54 @@ editButton.addEventListener("click", async function () {
     return;
   }
 
-  const editIdea = `
-Modify the following existing website according to the user's instruction.
-
-Original website requirements:
-${originalIdea}
-
-User editing instruction:
-${instruction}
-
-Existing website HTML:
-${generatedHTML}
-
-Return the complete updated HTML only.
-`;
-
   editButton.disabled = true;
   generateButton.disabled = true;
+
   statusText.textContent = "SYROX AI is editing your website...";
 
   try {
+    const response = await fetch(
+      "https://syrox-web-studio-api.onrender.com/api/edit",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          html: generatedHTML,
+          instruction: instruction
+        })
+      }
+    );
 
-    const updatedHTML = await generateWithAI(editIdea);
+    const data = await response.json();
 
-    generatedHTML = updatedHTML;
+    if (!response.ok) {
+      throw new Error(data.error || "Editing failed.");
+    }
+
+    if (!data.html || typeof data.html !== "string") {
+      throw new Error("Invalid AI response.");
+    }
+
+    generatedHTML = data.html
+      .replace(/^```html\s*/i, "")
+      .replace(/^```\s*/, "")
+      .replace(/\s*```$/, "");
+
     preview.srcdoc = generatedHTML;
-
     editPrompt.value = "";
 
     statusText.textContent = "Website successfully updated!";
 
   } catch (error) {
-
     console.error(error);
     statusText.textContent = error.message;
 
   } finally {
-
     editButton.disabled = false;
     generateButton.disabled = false;
-
   }
-
 });
 
 // DOWNLOAD WEBSITE
