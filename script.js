@@ -13,6 +13,8 @@ const colorTheme = document.getElementById("color-theme");
 
 const downloadButton =
   document.getElementById("download-website");
+const zipButton =
+  document.getElementById("download-zip");
 
 const editPrompt =
   document.getElementById("edit-prompt");
@@ -256,8 +258,6 @@ downloadButton.addEventListener("click", function () {
 
 
 // DOWNLOAD ZIP WEBSITE
-const zipButton =
-  document.getElementById("download-zip");
 
 zipButton.addEventListener("click", async function () {
 
