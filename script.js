@@ -256,14 +256,8 @@ downloadButton.addEventListener("click", function () {
 
 
 // DOWNLOAD ZIP WEBSITE
-
-const zipButton = document.createElement("button");
-
-zipButton.id = "download-zip";
-zipButton.textContent = "Download ZIP";
-zipButton.disabled = true;
-
-downloadButton.insertAdjacentElement("afterend", zipButton);
+const zipButton =
+  document.getElementById("download-zip");
 
 zipButton.addEventListener("click", async function () {
 
