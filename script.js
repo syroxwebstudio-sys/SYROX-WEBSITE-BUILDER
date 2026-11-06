@@ -1,97 +1,237 @@
 
+const API_URL =
+  "https://syrox-web-studio-api.onrender.com/api/generate";
+
 const generateButton = document.getElementById("generate");
 const ideaInput = document.getElementById("idea");
 const statusText = document.getElementById("status");
 const preview = document.getElementById("website-preview");
 
-generateButton.addEventListener("click", function() {
+const category = document.getElementById("category");
+const designStyle = document.getElementById("design-style");
+const colorTheme = document.getElementById("color-theme");
+
+const downloadButton =
+  document.getElementById("download-website");
+
+const editPrompt =
+  document.getElementById("edit-prompt");
+
+const editButton =
+  document.getElementById("edit-website");
+
+const desktopButton =
+  document.getElementById("desktop-view");
+
+const tabletButton =
+  document.getElementById("tablet-view");
+
+const mobileButton =
+  document.getElementById("mobile-view");
+
+let generatedHTML = "";
+let originalIdea = "";
+
+preview.setAttribute("sandbox", "");
+
+// AI API REQUEST
+
+async function generateWithAI(idea) {
+
+  const response = await fetch(API_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ idea })
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.error || "AI generation failed.");
+  }
+
+  if (!data.html || typeof data.html !== "string") {
+    throw new Error("Invalid AI response.");
+  }
+
+  return data.html
+    .replace(/^```html\s*/i, "")
+    .replace(/^```\s*/, "")
+    .replace(/\s*```$/, "");
+}
+
+// GENERATE WEBSITE
+
+generateButton.addEventListener("click", async function () {
 
   const idea = ideaInput.value.trim();
 
-  if (idea === "") {
+  if (!idea) {
     statusText.textContent = "Please enter your website idea.";
     return;
   }
 
-  const safeIdea = idea.replace(/[&<>"']/g, function(char) {
-    return {
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;"
-    }[char];
-  });
+  if (idea.length > 1500) {
+    statusText.textContent = "Please shorten your website idea.";
+    return;
+  }
 
-  const website = `
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport"
-        content="width=device-width, initial-scale=1">
-      <style>
-        body {
-          font-family: Arial;
-          text-align: center;
-          padding: 70px 15px;
-          background: #f7f9fc;
-          color: #172033;
-        }
-        h1 { color: #2878ed; }
-        .card {
-          background: white;
-          padding: 30px;
-          border-radius: 15px;
-          max-width: 500px;
-          margin: auto;
-          box-shadow: 0 5px 20px #0001;
-        }
-        button {
-          background: #2878ed;
-          color: white;
-          padding: 12px 25px;
-          border: 0;
-          border-radius: 8px;
-        }
-      </style>
-    </head>
-    <body>
-      <div class="card">
-        <h1>Welcome to Our Website</h1>
-        <p>Website created from your idea:</p>
-        <h3>${safeIdea}</h3>
-        <button>Contact Us</button>
-      </div>
-    </body>
-    </html>
-  `;
+  const finalIdea = `
+Create a complete professional responsive website.
 
-  preview.srcdoc = website;
+Website idea: ${idea}
 
-  statusText.textContent = "Website preview generated!";
+Website category: ${category.value}
+Design style: ${designStyle.value}
+Color theme: ${colorTheme.value}
+
+Requirements:
+- Premium modern design
+- Responsive layout
+- Attractive navigation
+- Professional sections
+- Mobile-friendly layout
+- Return only complete HTML code.
+`;
+
+  generateButton.disabled = true;
+  downloadButton.disabled = true;
+  editButton.disabled = true;
+
+  statusText.textContent = "SYROX AI is creating your website...";
+
+  try {
+
+    generatedHTML = await generateWithAI(finalIdea);
+
+    originalIdea = finalIdea;
+
+    preview.srcdoc = generatedHTML;
+
+    downloadButton.disabled = false;
+    editButton.disabled = false;
+
+    statusText.textContent = "Your website is ready!";
+
+  } catch (error) {
+
+    console.error(error);
+    statusText.textContent = error.message;
+
+  } finally {
+
+    generateButton.disabled = false;
+
+  }
+
 });
-const downloadButton =
-  document.getElementById("download-website");
 
-downloadButton.addEventListener("click", function() {
+// DESKTOP PREVIEW
 
-  const idea = ideaInput.value.trim();
+function setPreview(width, button) {
 
-  if (!idea || !preview.srcdoc) {
-    statusText.textContent =
-      "Please generate a website first.";
+  preview.style.width = width;
+
+  [desktopButton, tabletButton, mobileButton]
+    .forEach(function (item) {
+      item.classList.remove("active");
+    });
+
+  button.classList.add("active");
+}
+
+desktopButton.addEventListener("click", function () {
+  setPreview("100%", desktopButton);
+});
+
+tabletButton.addEventListener("click", function () {
+  setPreview("768px", tabletButton);
+});
+
+mobileButton.addEventListener("click", function () {
+  setPreview("375px", mobileButton);
+});
+
+// AI WEBSITE EDITING
+
+editButton.addEventListener("click", async function () {
+
+  const instruction = editPrompt.value.trim();
+
+  if (!generatedHTML) {
+    statusText.textContent = "Generate a website first.";
+    return;
+  }
+
+  if (!instruction) {
+    statusText.textContent = "Enter your editing instruction.";
+    return;
+  }
+
+  const editIdea = `
+Modify the following existing website according to the user's instruction.
+
+Original website requirements:
+${originalIdea}
+
+User editing instruction:
+${instruction}
+
+Existing website HTML:
+${generatedHTML}
+
+Return the complete updated HTML only.
+`;
+
+  editButton.disabled = true;
+  generateButton.disabled = true;
+  statusText.textContent = "SYROX AI is editing your website...";
+
+  try {
+
+    const updatedHTML = await generateWithAI(editIdea);
+
+    generatedHTML = updatedHTML;
+    preview.srcdoc = generatedHTML;
+
+    editPrompt.value = "";
+
+    statusText.textContent = "Website successfully updated!";
+
+  } catch (error) {
+
+    console.error(error);
+    statusText.textContent = error.message;
+
+  } finally {
+
+    editButton.disabled = false;
+    generateButton.disabled = false;
+
+  }
+
+});
+
+// DOWNLOAD WEBSITE
+
+downloadButton.addEventListener("click", function () {
+
+  if (!generatedHTML) {
+    statusText.textContent = "Generate a website first.";
     return;
   }
 
   const blob = new Blob(
-    [preview.srcdoc],
+    [generatedHTML],
     { type: "text/html" }
   );
 
   const url = URL.createObjectURL(blob);
 
   const link = document.createElement("a");
+
   link.href = url;
   link.download = "syrox-website.html";
 
@@ -99,7 +239,10 @@ downloadButton.addEventListener("click", function() {
   link.click();
   link.remove();
 
-  URL.revokeObjectURL(url);
+  setTimeout(function () {
+    URL.revokeObjectURL(url);
+  }, 1000);
 
-  statusText.textContent = "Website downloaded!";
+  statusText.textContent = "Website downloaded successfully!";
+
 });
