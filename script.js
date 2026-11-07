@@ -7,6 +7,7 @@ import {
   getDocs,
   deleteDoc,
   doc,
+  updateDoc,
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-firestore.js";
 
@@ -70,6 +71,7 @@ const mobileButton =
   document.getElementById("mobile-view");
 
 let generatedHTML = "";
+let editingProjectId = null;
 let originalIdea = "";
 
 preview.setAttribute("sandbox", "");
@@ -445,6 +447,8 @@ editSavedButton.textContent = "Edit Project";
 
 editSavedButton.addEventListener("click", () => {
 
+  editingProjectId = projectDoc.id;
+
   generatedHTML = project.websiteHTML || "";
 
   if (!generatedHTML) {
@@ -561,7 +565,30 @@ saveProjectButton.addEventListener("click", async function () {
         createdAt: serverTimestamp()
       }
     );
+// Update Existing Saved Project
+if (editingProjectId && auth.currentUser) {
 
+  await updateDoc(
+    doc(
+      db,
+      "users",
+      auth.currentUser.uid,
+      "projects",
+      editingProjectId
+    ),
+    {
+      websiteHTML: generatedHTML,
+      projectName: ideaInput.value.trim(),
+      category: category.value,
+      designStyle: designStyle.value,
+      colorTheme: colorTheme.value,
+      updatedAt: serverTimestamp()
+    }
+  );
+
+  editingProjectId = null;
+  loadProjects();
+}
     statusText.textContent = "Project saved successfully!";
 
   } catch (error) {
