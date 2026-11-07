@@ -1,5 +1,11 @@
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/13.2.0/firebase-firestore.js";
 
 import {
   getAuth,
@@ -22,6 +28,7 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
 const googleProvider = new GoogleAuthProvider();
+const db = getFirestore(firebaseApp);
 
 const API_URL =
   "https://syrox-web-studio-api.onrender.com/api/generate";
