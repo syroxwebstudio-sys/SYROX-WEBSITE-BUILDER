@@ -373,9 +373,9 @@ googleLogoutButton.addEventListener("click", async () => {
 
 // Check Login Status
 onAuthStateChanged(auth, (user) => {
-  
+
   saveProjectButton.disabled = !user || !generatedHTML;
-  
+
   if (user) {
     googleLoginButton.hidden = true;
     googleLogoutButton.hidden = false;
@@ -385,5 +385,49 @@ onAuthStateChanged(auth, (user) => {
     googleLogoutButton.hidden = true;
     userInfo.textContent = "";
   }
+
 });
 
+
+// Save Project to Firestore
+saveProjectButton.addEventListener("click", async function () {
+
+  const user = auth.currentUser;
+
+  if (!user) {
+    alert("Please sign in with Google first.");
+    return;
+  }
+
+  if (!generatedHTML) {
+    alert("Generate a website first.");
+    return;
+  }
+
+  saveProjectButton.disabled = true;
+  statusText.textContent = "Saving your project...";
+
+  try {
+    await addDoc(
+      collection(db, "users", user.uid, "projects"),
+      {
+        projectName: ideaInput.value.trim(),
+        websiteHTML: generatedHTML,
+        category: category.value,
+        designStyle: designStyle.value,
+        colorTheme: colorTheme.value,
+        createdAt: serverTimestamp()
+      }
+    );
+
+    statusText.textContent = "Project saved successfully!";
+
+  } catch (error) {
+    console.error("Save Error:", error);
+    statusText.textContent = "Project save failed: " + error.message;
+
+  } finally {
+    saveProjectButton.disabled = !auth.currentUser;
+  }
+
+});
