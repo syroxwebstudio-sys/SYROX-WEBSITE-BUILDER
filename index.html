@@ -9,6 +9,7 @@
 </head>
 <body>
 
+
 <header>
   <div class="logo">SYROX<span>.</span></div>
   <nav>
@@ -16,10 +17,17 @@
     <a href="#builder">AI Builder</a>
     <a href="#preview-section">Preview</a>
   </nav>
-  <button class="login" onclick="document.getElementById('builder').scrollIntoView({behavior:'smooth'})">
-    Get Started
-  </button>
+  <div class="auth-buttons">
+    <button class="login" id="google-login">
+      Sign in with Google
+    </button>
+    <button class="login" id="google-logout" hidden>
+      Logout
+    </button>
+  </div>
+  <span id="user-info"></span>
 </header>
+
 
 <main id="home">
   <section class="hero">
