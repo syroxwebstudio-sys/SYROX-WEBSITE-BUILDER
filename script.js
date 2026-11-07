@@ -46,6 +46,8 @@ const downloadButton =
   document.getElementById("download-website");
 const zipButton =
   document.getElementById("download-zip");
+const saveProjectButton =
+  document.getElementById("save-project");
 
 const editPrompt =
   document.getElementById("edit-prompt");
@@ -133,7 +135,7 @@ Requirements:
   downloadButton.disabled = true;
   zipButton.disabled = true;
   editButton.disabled = true;
-
+  saveProjectButton.disabled = true;
   statusText.textContent = "SYROX AI is creating your website...";
 
   try {
@@ -147,6 +149,7 @@ Requirements:
     downloadButton.disabled = false;
     zipButton.disabled = false;
     editButton.disabled = false;
+    saveProjectButton.disabled = !auth.currentUser;
 
     statusText.textContent = "Your website is ready!";
 
@@ -370,6 +373,9 @@ googleLogoutButton.addEventListener("click", async () => {
 
 // Check Login Status
 onAuthStateChanged(auth, (user) => {
+  
+  saveProjectButton.disabled = !user || !generatedHTML;
+  
   if (user) {
     googleLoginButton.hidden = true;
     googleLogoutButton.hidden = false;
