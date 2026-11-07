@@ -251,6 +251,29 @@ editButton.addEventListener("click", async function () {
 
     preview.srcdoc = generatedHTML;
     editPrompt.value = "";
+    if (editingProjectId && auth.currentUser) {
+
+  await updateDoc(
+    doc(
+      db,
+      "users",
+      auth.currentUser.uid,
+      "projects",
+      editingProjectId
+    ),
+    {
+      websiteHTML: generatedHTML,
+      projectName: ideaInput.value.trim(),
+      category: category.value,
+      designStyle: designStyle.value,
+      colorTheme: colorTheme.value,
+      updatedAt: serverTimestamp()
+    }
+  );
+
+  editingProjectId = null;
+  await loadProjects();
+}
 
     statusText.textContent = "Website successfully updated!";
 
@@ -566,29 +589,7 @@ saveProjectButton.addEventListener("click", async function () {
       }
     );
 // Update Existing Saved Project
-if (editingProjectId && auth.currentUser) {
 
-  await updateDoc(
-    doc(
-      db,
-      "users",
-      auth.currentUser.uid,
-      "projects",
-      editingProjectId
-    ),
-    {
-      websiteHTML: generatedHTML,
-      projectName: ideaInput.value.trim(),
-      category: category.value,
-      designStyle: designStyle.value,
-      colorTheme: colorTheme.value,
-      updatedAt: serverTimestamp()
-    }
-  );
-
-  editingProjectId = null;
-  loadProjects();
-}
     statusText.textContent = "Project saved successfully!";
 
   } catch (error) {
