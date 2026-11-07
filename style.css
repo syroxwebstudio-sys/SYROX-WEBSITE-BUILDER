@@ -481,3 +481,81 @@ footer {
   cursor: pointer;
   margin: 8px;
 }
+/* My Projects Dashboard */
+
+.dashboard-section {
+  padding: 60px 8%;
+  background: #080d1a;
+  color: white;
+  min-height: 300px;
+}
+
+.dashboard-header {
+  margin-bottom: 30px;
+}
+
+.dashboard-header h2 {
+  font-size: 32px;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.dashboard-header p {
+  color: #9caac4;
+}
+
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  background: #111a2e;
+  border: 1px solid #263653;
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.project-card h3 {
+  color: #60a5fa;
+  margin-bottom: 12px;
+}
+
+.project-card p {
+  color: #cbd5e1;
+  margin-bottom: 18px;
+}
+
+.project-card button {
+  padding: 11px 16px;
+  border: none;
+  border-radius: 7px;
+  margin: 5px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.project-card button:first-of-type {
+  background: #2563eb;
+  color: white;
+}
+
+.project-card button:last-of-type {
+  background: #dc2626;
+  color: white;
+}
+
+.project-card button:hover {
+  opacity: 0.85;
+}
+
+@media (max-width: 600px) {
+  .dashboard-section {
+    padding: 40px 5%;
+  }
+
+  .dashboard-header h2 {
+    font-size: 26px;
+  }
+}
