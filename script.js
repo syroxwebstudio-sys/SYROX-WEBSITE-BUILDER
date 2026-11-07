@@ -287,39 +287,11 @@ editButton.addEventListener("click", async function () {
   }
 });
 
+
+
 // DOWNLOAD WEBSITE
 
 downloadButton.addEventListener("click", function () {
-
-  if (!generatedHTML) {
-    statusText.textContent = "Generate a website first.";
-    return;
-  }
-
-  const blob = new Blob(
-    [generatedHTML],
-    { type: "text/html" }
-  );
-
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-
-  link.href = url;
-  link.download = "syrox-website.html";
-
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-
-  URL.revokeObjectURL(url);
-
-  statusText.textContent = "Website downloaded successfully!";
-});
-
-// DOWNLOAD HTML WEBSITE
-
-downloadButton.addEventListener("click", function () {
-
   if (!generatedHTML) {
     statusText.textContent = "Generate a website first.";
     return;
@@ -344,52 +316,59 @@ downloadButton.addEventListener("click", function () {
     URL.revokeObjectURL(url);
   }, 1000);
 
-  statusText.textContent = "HTML downloaded successfully!";
+  statusText.textContent = "Website downloaded successfully!";
 });
 
 
+// DOWNLOAD ZIP WEBSITE
 
-// DOWNLOAD WEBSITE
-
-downloadButton.addEventListener("click", function () {
-
+zipButton.addEventListener("click", async function () {
   if (!generatedHTML) {
     statusText.textContent = "Generate a website first.";
     return;
   }
 
-  const blob = new Blob(
-    [generatedHTML],
-    { type: "text/html" }
-  );
-
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-
-  link.href = url;
-  link.download = "syrox-website.html";
-
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-
-  URL.revokeObjectURL(url);
-
-  statusText.textContent = "Website downloaded successfully!";
-});
-.";
-
-  } finally {
-
-    zipButton.disabled = false;
-
+  if (typeof JSZip === "undefined") {
+    statusText.textContent = "ZIP library not loaded. Refresh the page.";
+    return;
   }
 
-});
+  zipButton.disabled = true;
+  statusText.textContent = "Creating your ZIP file...";
 
-const googleLoginButton = document.getElementById("google-login");
-const googleLogoutButton = document.getElementById("google-logout");
-const userInfo = document.getElementById("user-info");
+  try {
+    const zip = new JSZip();
+
+    zip.file("index.html", generatedHTML);
+
+    const zipBlob = await zip.generateAsync({
+      type: "blob"
+    });
+
+    const url = URL.createObjectURL(zipBlob);
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = "syrox-website.zip";
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    setTimeout(function () {
+      URL.revokeObjectURL(url);
+    }, 1000);
+
+    statusText.textContent = "ZIP downloaded successfully!";
+
+  } catch (error) {
+    console.error(error);
+    statusText.textContent = "ZIP download failed: " + error.message;
+
+  } finally {
+    zipButton.disabled = false;
+  }
+});
 
 // Google Login
 googleLoginButton.addEventListener("click", async () => {
