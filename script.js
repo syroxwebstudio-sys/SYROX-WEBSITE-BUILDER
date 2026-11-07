@@ -1,4 +1,28 @@
 
+import { initializeApp } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
+
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/13.2.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAiGfvrhAgBLmj8FImJz0sPsDHA2JlSb3E",
+  authDomain: "syrox-web-studio.firebaseapp.com",
+  projectId: "syrox-web-studio",
+  storageBucket: "syrox-web-studio.firebasestorage.app",
+  messagingSenderId: "270125576222",
+  appId: "1:270125576222:web:2d7c90ba3fdb610b42fe0f",
+  measurementId: "G-NHL77H14MG"
+};
+
+const firebaseApp = initializeApp(firebaseConfig);
+const auth = getAuth(firebaseApp);
+const googleProvider = new GoogleAuthProvider();
+
 const API_URL =
   "https://syrox-web-studio-api.onrender.com/api/generate";
 
