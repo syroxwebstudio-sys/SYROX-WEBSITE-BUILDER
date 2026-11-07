@@ -438,7 +438,31 @@ openButton.addEventListener("click", () => {
 
 });
 
+// Edit Project Button
+const editSavedButton = document.createElement("button");
 
+editSavedButton.textContent = "Edit Project";
+
+editSavedButton.addEventListener("click", () => {
+
+  generatedHTML = project.websiteHTML || "";
+
+  if (!generatedHTML) {
+    alert("Project HTML not found.");
+    return;
+  }
+
+  ideaInput.value = project.projectName || "";
+
+  preview.srcdoc = generatedHTML;
+
+  document.getElementById("builder").scrollIntoView({
+    behavior: "smooth"
+  });
+
+  statusText.textContent = "Saved project loaded. You can edit it now.";
+
+});
 // Delete Project Button
 const deleteButton = document.createElement("button");
 deleteButton.textContent = "Delete Project";
@@ -471,6 +495,7 @@ deleteButton.addEventListener("click", async () => {
 card.appendChild(title);
 card.appendChild(categoryText);
 card.appendChild(openButton);
+card.appendChild(editSavedButton);
 card.appendChild(deleteButton);
 
 projectsContainer.appendChild(card);
