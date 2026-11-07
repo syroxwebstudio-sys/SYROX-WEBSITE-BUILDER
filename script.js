@@ -51,6 +51,8 @@ const zipButton =
   document.getElementById("download-zip");
 const saveProjectButton =
   document.getElementById("save-project");
+const projectsContainer =
+  document.getElementById("projects-container");
 
 const editPrompt =
   document.getElementById("edit-prompt");
@@ -373,13 +375,71 @@ googleLogoutButton.addEventListener("click", async () => {
     alert("Logout failed: " + error.message);
   }
 });
+// Load Saved Projects
+async function loadProjects() {
 
+  const user = auth.currentUser;
+
+  if (!user) {
+    projectsContainer.textContent =
+      "Please sign in to view your projects.";
+    return;
+  }
+
+  projectsContainer.textContent = "Loading projects...";
+
+  try {
+
+    const snapshot = await getDocs(
+      collection(db, "users", user.uid, "projects")
+    );
+
+    projectsContainer.innerHTML = "";
+
+    if (snapshot.empty) {
+      projectsContainer.textContent =
+        "No saved projects yet.";
+      return;
+    }
+
+    snapshot.forEach((projectDoc) => {
+
+      const project = projectDoc.data();
+
+      const card = document.createElement("div");
+      card.className = "project-card";
+
+      const title = document.createElement("h3");
+      title.textContent = project.projectName || "Untitled Project";
+
+      const categoryText = document.createElement("p");
+      categoryText.textContent =
+        "Category: " + (project.category || "Not specified");
+
+      card.appendChild(title);
+      card.appendChild(categoryText);
+
+      projectsContainer.appendChild(card);
+
+    });
+
+  } catch (error) {
+
+    console.error("Load Projects Error:", error);
+
+    projectsContainer.textContent =
+      "Unable to load projects: " + error.message;
+
+  }
+}
 // Check Login Status
 onAuthStateChanged(auth, (user) => {
 
   saveProjectButton.disabled = !user || !generatedHTML;
 
   if (user) {
+    loadProjects();
+    
     googleLoginButton.hidden = true;
     googleLogoutButton.hidden = false;
     userInfo.textContent = "Welcome, " + user.displayName;
