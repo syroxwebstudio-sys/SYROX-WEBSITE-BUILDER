@@ -416,10 +416,64 @@ async function loadProjects() {
       categoryText.textContent =
         "Category: " + (project.category || "Not specified");
 
-      card.appendChild(title);
-      card.appendChild(categoryText);
+     // Open Project Button
+const openButton = document.createElement("button");
+openButton.textContent = "Open Project";
 
-      projectsContainer.appendChild(card);
+openButton.addEventListener("click", () => {
+
+  const website = project.websiteHTML || "";
+
+  if (!website) {
+    alert("Website HTML not found.");
+    return;
+  }
+
+  generatedHTML = website;
+
+  preview.srcdoc = generatedHTML;
+
+  document.getElementById("preview-section")
+    .scrollIntoView({ behavior: "smooth" });
+
+});
+
+
+// Delete Project Button
+const deleteButton = document.createElement("button");
+deleteButton.textContent = "Delete Project";
+
+deleteButton.addEventListener("click", async () => {
+
+  const confirmDelete = confirm(
+    "Are you sure you want to delete this project?"
+  );
+
+  if (!confirmDelete) return;
+
+  try {
+
+    await deleteDoc(
+      doc(db, "users", auth.currentUser.uid, "projects", projectDoc.id)
+    );
+
+    card.remove();
+
+  } catch (error) {
+
+    console.error(error);
+    alert("Delete failed: " + error.message);
+
+  }
+
+});
+
+card.appendChild(title);
+card.appendChild(categoryText);
+card.appendChild(openButton);
+card.appendChild(deleteButton);
+
+projectsContainer.appendChild(card);
 
     });
 
