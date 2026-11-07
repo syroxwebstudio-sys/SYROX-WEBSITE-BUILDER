@@ -289,6 +289,33 @@ editButton.addEventListener("click", async function () {
 
 // DOWNLOAD WEBSITE
 
+downloadButton.addEventListener("click", function () {
+
+  if (!generatedHTML) {
+    statusText.textContent = "Generate a website first.";
+    return;
+  }
+
+  const blob = new Blob(
+    [generatedHTML],
+    { type: "text/html" }
+  );
+
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+
+  link.href = url;
+  link.download = "syrox-website.html";
+
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+
+  URL.revokeObjectURL(url);
+
+  statusText.textContent = "Website downloaded successfully!";
+});
+
 // DOWNLOAD HTML WEBSITE
 
 downloadButton.addEventListener("click", function () {
@@ -321,53 +348,36 @@ downloadButton.addEventListener("click", function () {
 });
 
 
-// DOWNLOAD ZIP WEBSITE
 
-zipButton.addEventListener("click", async function () {
+// DOWNLOAD WEBSITE
+
+downloadButton.addEventListener("click", function () {
 
   if (!generatedHTML) {
     statusText.textContent = "Generate a website first.";
     return;
   }
 
-  if (typeof JSZip === "undefined") {
-    statusText.textContent = "ZIP library not loaded. Refresh the page.";
-    return;
-  }
+  const blob = new Blob(
+    [generatedHTML],
+    { type: "text/html" }
+  );
 
-  zipButton.disabled = true;
-  statusText.textContent = "Creating your ZIP file...";
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
 
-  try {
+  link.href = url;
+  link.download = "syrox-website.html";
 
-    const zip = new JSZip();
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
 
-    zip.file("index.html", generatedHTML);
+  URL.revokeObjectURL(url);
 
-    const zipBlob = await zip.generateAsync({
-      type: "blob"
-    });
-
-    const url = URL.createObjectURL(zipBlob);
-    const link = document.createElement("a");
-
-    link.href = url;
-    link.download = "syrox-website.zip";
-
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-
-    setTimeout(function () {
-      URL.revokeObjectURL(url);
-    }, 1000);
-
-    statusText.textContent = "ZIP downloaded successfully!";
-
-  } catch (error) {
-
-    console.error(error);
-    statusText.textContent = "ZIP download failed.";
+  statusText.textContent = "Website downloaded successfully!";
+});
+.";
 
   } finally {
 
