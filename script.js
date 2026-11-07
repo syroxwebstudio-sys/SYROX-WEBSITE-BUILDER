@@ -370,6 +370,7 @@ zipButton.addEventListener("click", async function () {
   }
 });
 
+
 // Google Login
 googleLoginButton.addEventListener("click", async () => {
   try {
