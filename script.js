@@ -336,3 +336,41 @@ zipButton.addEventListener("click", async function () {
   }
 
 });
+
+const googleLoginButton = document.getElementById("google-login");
+const googleLogoutButton = document.getElementById("google-logout");
+const userInfo = document.getElementById("user-info");
+
+// Google Login
+googleLoginButton.addEventListener("click", async () => {
+  try {
+    await signInWithPopup(auth, googleProvider);
+  } catch (error) {
+    console.error("Login Error:", error);
+    alert("Google Login failed: " + error.message);
+  }
+});
+
+// Logout
+googleLogoutButton.addEventListener("click", async () => {
+  try {
+    await signOut(auth);
+  } catch (error) {
+    console.error("Logout Error:", error);
+    alert("Logout failed: " + error.message);
+  }
+});
+
+// Check Login Status
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    googleLoginButton.hidden = true;
+    googleLogoutButton.hidden = false;
+    userInfo.textContent = "Welcome, " + user.displayName;
+  } else {
+    googleLoginButton.hidden = false;
+    googleLogoutButton.hidden = true;
+    userInfo.textContent = "";
+  }
+});
+
