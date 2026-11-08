@@ -5,147 +5,256 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SYROX Web Studio</title>
-  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="stylesheet" href="style.css?v=3">
 </head>
+
 <body>
 
+<div class="app-layout">
 
-<header>
-  <div class="logo">SYROX<span>.</span></div>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#builder">AI Builder</a>
-    <a href="#preview-section">Preview</a>
-  </nav>
-  <div class="auth-buttons">
-    <button class="login" id="google-login">
-      Sign in with Google
-    </button>
-    <button class="login" id="google-logout" hidden>
-      Logout
-    </button>
-  </div>
-  <span id="user-info"></span>
-</header>
-  <!-- My Projects Dashboard -->
-<section id="dashboard" class="dashboard-section">
+  <!-- LEFT SIDEBAR -->
+  <aside class="sidebar">
 
-  <div class="dashboard-header">
-    <h2>My Projects</h2>
-    <p>Manage your saved websites in one place.</p>
-  </div>
-
-  <div id="projects-container" class="projects-container">
-    <p id="projects-message">Please sign in to view your projects.</p>
-  </div>
-
-</section>
-
-
-<main id="home">
-  <section class="hero">
-    <p class="tag">AI POWERED WEBSITE CREATOR</p>
-
-    <h1>Create Your Website<br>
-      <span>With AI</span>
-    </h1>
-
-    <p class="description">
-      Turn your ideas into professional websites.
-      No coding skills required.
-    </p>
-
-    <div id="builder" class="builder-box">
-      <textarea id="idea" placeholder="Describe your website idea..."></textarea>
-
-      <div class="design-controls">
-        <select id="category">
-          <option value="Business">Business</option>
-          <option value="Portfolio">Portfolio</option>
-          <option value="Restaurant">Restaurant</option>
-          <option value="E-commerce">E-commerce</option>
-          <option value="Education">Education</option>
-          <option value="Blog">Blog</option>
-          <option value="Landing Page">Landing Page</option>
-        </select>
-
-        <select id="design-style">
-          <option value="Modern">Modern</option>
-          <option value="Luxury">Luxury</option>
-          <option value="Minimal">Minimal</option>
-          <option value="Corporate">Corporate</option>
-          <option value="Creative">Creative</option>
-        </select>
-
-        <select id="color-theme">
-          <option value="Blue and White">Blue and White</option>
-          <option value="Black and Gold">Black and Gold</option>
-          <option value="Dark Cyber">Dark Cyber</option>
-          <option value="Purple Gradient">Purple Gradient</option>
-          <option value="Green and White">Green and White</option>
-          <option value="Choose suitable colors">AI Choose Colors</option>
-        </select>
-      </div>
-
-      <button id="generate">Generate Website</button>
+    <div class="sidebar-logo">
+      SYROX<span>.</span>
     </div>
 
-    <p id="status">Free preview available</p>
-  </section>
-</main>
+    <div class="sidebar-profile">
+      <div class="profile-avatar">S</div>
+      <div class="profile-details">
+        <strong>My Profile</strong>
+        <span id="user-info">Guest User</span>
+      </div>
+    </div>
 
-<section id="preview-section" class="preview-section">
-  <h2>Your Website Preview</h2>
-  <p>Your generated website will appear here.</p>
+    <p class="sidebar-label">MENU</p>
 
-  <div class="preview-controls">
-    <button id="desktop-view" class="active">Desktop</button>
-    <button id="tablet-view">Tablet</button>
-    <button id="mobile-view">Mobile</button>
+    <nav class="sidebar-nav">
+      <a href="#home">⌂ <span>Dashboard</span></a>
+      <a href="#builder">✦ <span>AI Website Builder</span></a>
+      <a href="#dashboard">▣ <span>My Projects</span></a>
+      <a href="#preview-section">◫ <span>Website Preview</span></a>
+      <a href="#about">ⓘ <span>About SYROX</span></a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <button class="sidebar-login" id="google-logout" hidden>
+        Logout
+      </button>
+      <p>SYROX WEB STUDIO</p>
+      <span>Build something amazing.</span>
+    </div>
+
+  </aside>
+
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+      <div>
+        <p class="topbar-small">WELCOME TO</p>
+        <h2>SYROX Web Studio</h2>
+      </div>
+
+      <div class="topbar-actions">
+        <button class="login" id="google-login">
+          Sign in with Google
+        </button>
+      </div>
+    </header>
+
+
+    <!-- DASHBOARD -->
+    <section id="home" class="dashboard-welcome">
+      <div>
+        <p class="tag">AI WEBSITE CREATION PLATFORM</p>
+        <h1>Build Your Ideas<br>
+          <span>Into Reality.</span>
+        </h1>
+        <p class="description">
+          Create professional websites with the power of AI.
+          No coding skills required.
+        </p>
+        <a class="start-button" href="#builder">
+          Start Creating
+        </a>
+      </div>
+    </section>
+
+
+    <!-- MY PROJECTS -->
+    <section id="dashboard" class="dashboard-section">
+
+      <div class="dashboard-header">
+        <div>
+          <p class="section-label">YOUR WORKSPACE</p>
+          <h2>My Projects</h2>
+          <p>Manage your saved websites in one place.</p>
+        </div>
+      </div>
+
+      <div id="projects-container" class="projects-container">
+        <p id="projects-message">
+          Please sign in to view your projects.
+        </p>
+      </div>
+
+    </section>
+
+
+    <!-- AI BUILDER -->
+    <section id="builder" class="builder-area">
+
+      <div class="section-heading">
+        <p class="section-label">CREATE WITH AI</p>
+        <h2>AI Website Builder</h2>
+        <p>Describe your idea. Let SYROX AI build your website.</p>
+      </div>
+
+      <div class="builder-box">
+
+        <h2>What website do you want to create?</h2>
+
+        <textarea
+          id="idea"
+          placeholder="Describe your website idea...">
+        </textarea>
+
+        <div class="design-controls">
+
+          <h3>Customize Your Design</h3>
+
+          <label for="category">Website Category</label>
+          <select id="category">
+            <option value="Business">Business</option>
+            <option value="Portfolio">Portfolio</option>
+            <option value="Restaurant">Restaurant</option>
+            <option value="E-commerce">E-commerce</option>
+            <option value="Education">Education</option>
+            <option value="Blog">Blog</option>
+            <option value="Landing Page">Landing Page</option>
+          </select>
+
+          <label for="design-style">Design Style</label>
+          <select id="design-style">
+            <option value="Modern">Modern</option>
+            <option value="Luxury">Luxury</option>
+            <option value="Minimal">Minimal</option>
+            <option value="Corporate">Corporate</option>
+            <option value="Creative">Creative</option>
+          </select>
+
+          <label for="color-theme">Color Theme</label>
+          <select id="color-theme">
+            <option value="Blue and White">Blue and White</option>
+            <option value="Black and Gold">Black and Gold</option>
+            <option value="Dark Cyber">Dark Cyber</option>
+            <option value="Purple Gradient">Purple Gradient</option>
+            <option value="Green and White">Green and White</option>
+            <option value="Choose suitable colors">AI Choose Colors</option>
+          </select>
+
+        </div>
+
+        <button id="generate">
+          Generate Website
+        </button>
+
+        <p id="status">Free preview available</p>
+
+      </div>
+
+    </section>
+
+
+    <!-- WEBSITE PREVIEW -->
+    <section id="preview-section" class="preview-section">
+
+      <div class="section-heading">
+        <p class="section-label">LIVE WORKSPACE</p>
+        <h2>Your Website Preview</h2>
+        <p>Your generated website will appear here.</p>
+      </div>
+
+      <div class="preview-controls">
+        <button id="desktop-view" class="active">Desktop</button>
+        <button id="tablet-view">Tablet</button>
+        <button id="mobile-view">Mobile</button>
+      </div>
+
+      <iframe
+        id="website-preview"
+        title="Generated Website Preview"
+        sandbox="">
+      </iframe>
+
+      <div class="download-controls">
+
+        <button id="download-website" disabled>
+          Download Website
+        </button>
+
+        <button id="download-zip" disabled>
+          Download ZIP
+        </button>
+
+        <button id="save-project" disabled>
+          Save Project
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- AI EDITOR -->
+    <section class="ai-edit-box">
+
+      <p class="section-label">MAKE CHANGES WITH AI</p>
+      <h2>AI Website Editor</h2>
+
+      <p>Tell SYROX AI what changes you want.</p>
+
+      <textarea
+        id="edit-prompt"
+        placeholder="Example: Change the background to black...">
+      </textarea>
+
+      <button id="edit-website">
+        Edit Website
+      </button>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section id="about" class="about-section">
+      <p class="section-label">ABOUT US</p>
+      <h2>About SYROX Web Studio</h2>
+      <p>
+        Your business deserves a better website.
+        Build professional websites faster with AI.
+      </p>
+      <strong>Beyond Technology. Beyond Limits.</strong>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+      © 2026 SYROX Web Studio
+      <br>
+      Built for a smarter tomorrow.
+    </footer>
+
   </div>
 
-  <iframe
-    id="website-preview"
-    title="Generated Website Preview"
-    sandbox="">
-  </iframe>
+</div>
 
 
-<button id="download-website" disabled>
-  Download Website
-</button>
-
-<button id="download-zip" disabled>
-  Download ZIP
-</button>
-
-<button id="save-project" disabled>
-  Save Project
-</button>
-</section>
-
-</section>
-
-<section class="ai-edit-box">
-  <h2>AI Website Editor</h2>
-  <p>Tell SYROX AI what changes you want.</p>
-
-  <textarea
-    id="edit-prompt"
-    placeholder="Example: Change the background to black...">
-  </textarea>
-
-  <button id="edit-website">
-    Edit Website
-  </button>
-</section>
-
-<footer id="services">
-  © 2026 SYROX Web Studio
-  <br>
-  Built for a smarter tomorrow.
-</footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script type="module" src="script.js"></script>
+
 </body>
 </html>
