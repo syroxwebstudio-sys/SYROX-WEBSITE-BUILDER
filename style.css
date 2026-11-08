@@ -1731,3 +1731,178 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
+/* =================================
+   SYROX PREMIUM BLACK THEME
+================================= */
+
+body {
+  background: #080808;
+  color: #f5f5f5;
+}
+
+/* Main layout */
+.main-content {
+  background: #080808;
+}
+
+/* Sidebar */
+.sidebar {
+  background: #050505;
+  border-right: 1px solid #252525;
+  color: #ffffff;
+}
+
+.sidebar-logo {
+  color: #ffffff;
+}
+
+.sidebar-profile {
+  border-bottom: 1px solid #252525;
+}
+
+.sidebar-nav a {
+  color: #bdbdbd;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+  background: #242424;
+  color: #ffffff;
+}
+
+/* Topbar */
+.topbar {
+  background: #0d0d0d;
+  border-bottom: 1px solid #252525;
+  color: #ffffff;
+}
+
+/* Headings and text */
+h1, h2, h3, h4 {
+  color: #ffffff;
+}
+
+p, span, label {
+  color: #bdbdbd;
+}
+
+/* Dashboard welcome */
+.dashboard-welcome {
+  background: linear-gradient(135deg, #171717, #080808);
+  border: 1px solid #303030;
+  color: #ffffff;
+}
+
+/* Statistics cards */
+.stats-card {
+  background: #141414;
+  border: 1px solid #303030;
+  box-shadow: none;
+}
+
+.stats-card:hover {
+  background: #1b1b1b;
+  border-color: #555555;
+}
+
+.stats-card h2 {
+  color: #ffffff;
+}
+
+.stats-icon {
+  background: #292929;
+  color: #ffffff;
+}
+
+/* General cards and sections */
+.project-card,
+.builder-area,
+.about-section,
+section {
+  border-color: #292929;
+}
+
+.project-card,
+.builder-area,
+.about-section {
+  background: #141414;
+  color: #ffffff;
+}
+
+/* Inputs */
+input,
+textarea,
+select {
+  background: #101010;
+  color: #ffffff;
+  border: 1px solid #383838;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #858585;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #a0a0a0;
+}
+
+/* Buttons */
+button,
+.start-button {
+  background: #eeeeee;
+  color: #080808;
+  border: 1px solid #eeeeee;
+  transition: 0.2s ease;
+}
+
+button:hover,
+.start-button:hover {
+  background: #c9c9c9;
+  border-color: #c9c9c9;
+}
+
+/* Secondary buttons */
+button:disabled {
+  background: #333333;
+  color: #888888;
+  border-color: #333333;
+}
+
+/* Preview */
+#website-preview {
+  background: #ffffff;
+  border: 1px solid #383838;
+}
+
+/* Download controls */
+.download-controls {
+  background: transparent;
+}
+
+/* Dividers */
+hr {
+  border-color: #292929;
+}
+
+/* Footer */
+footer {
+  background: #080808;
+  color: #999999;
+  border-top: 1px solid #252525;
+}
+
+/* Mobile */
+@media (max-width: 750px) {
+  .sidebar {
+    background: #050505;
+  }
+
+  .main-content {
+    background: #080808;
+  }
+}
