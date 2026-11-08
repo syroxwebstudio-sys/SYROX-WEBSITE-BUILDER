@@ -55,6 +55,12 @@ const saveProjectButton =
 const projectsContainer =
   document.getElementById("projects-container");
 
+const totalProjectsCount =
+  document.getElementById("stats-total-projects");
+
+const websitesCreatedCount =
+  document.getElementById("stats-websites-created");
+
 const editPrompt =
   document.getElementById("edit-prompt");
 
@@ -411,7 +417,8 @@ async function loadProjects() {
     const snapshot = await getDocs(
       collection(db, "users", user.uid, "projects")
     );
-
+totalProjectsCount.textContent = snapshot.size;
+websitesCreatedCount.textContent = snapshot.size;
     projectsContainer.innerHTML = "";
 
     if (snapshot.empty) {
