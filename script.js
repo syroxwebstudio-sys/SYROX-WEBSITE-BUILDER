@@ -372,6 +372,9 @@ zipButton.addEventListener("click", async function () {
 
 
 // Google Login
+const googleLoginButton = document.getElementById("google-login");
+const googleLogoutButton = document.getElementById("google-logout");
+const userInfo = document.getElementById("user-info");
 googleLoginButton.addEventListener("click", async () => {
   try {
     await signInWithPopup(auth, googleProvider);
