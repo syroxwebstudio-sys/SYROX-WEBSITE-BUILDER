@@ -553,6 +553,9 @@ onAuthStateChanged(auth, (user) => {
     googleLoginButton.hidden = false;
     googleLogoutButton.hidden = true;
     userInfo.textContent = "";
+
+    totalProjectsCount.textContent = "0";
+    websitesCreatedCount.textContent = "0";
   }
 
 });
