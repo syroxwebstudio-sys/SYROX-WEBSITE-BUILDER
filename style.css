@@ -1054,3 +1054,15 @@ footer span {
 .project-card button:hover {
   background: #5EEAD4;
 }
+.project-card .project-actions button,
+.project-card button {
+  background-color: #2DD4BF !important;
+  color: #101719 !important;
+  border: 1px solid #2DD4BF !important;
+}
+
+.project-card .project-actions button:hover,
+.project-card button:hover {
+  background-color: #5EEAD4 !important;
+  color: #101719 !important;
+}
