@@ -518,13 +518,76 @@ deleteButton.addEventListener("click", async () => {
   }
 
 });
+// RENAME PROJECT BUTTON
 
+const renameButton = document.createElement("button");
+renameButton.textContent = "Rename Project";
+
+renameButton.addEventListener("click", async () => {
+
+  const newName = prompt(
+    "Enter new project name:",
+    project.projectName || ""
+  );
+
+  if (!newName || !newName.trim()) return;
+
+  try {
+
+    await updateDoc(
+      doc(db, "users", auth.currentUser.uid, "projects", projectDoc.id),
+      {
+        projectName: newName.trim(),
+        updatedAt: serverTimestamp()
+      }
+    );
+
+    statusText.textContent = "Project renamed successfully!";
+    await loadProjects();
+
+  } catch (error) {
+    console.error(error);
+    alert("Rename failed: " + error.message);
+  }
+
+});
+
+
+// DUPLICATE PROJECT BUTTON
+
+const duplicateButton = document.createElement("button");
+duplicateButton.textContent = "Duplicate Project";
+
+duplicateButton.addEventListener("click", async () => {
+
+  try {
+
+    await addDoc(
+      collection(db, "users", auth.currentUser.uid, "projects"),
+      {
+        ...project,
+        projectName: (project.projectName || "Untitled Project") + " (Copy)",
+        createdAt: serverTimestamp(),
+        updatedAt: serverTimestamp()
+      }
+    );
+
+    statusText.textContent = "Project duplicated successfully!";
+    await loadProjects();
+
+  } catch (error) {
+    console.error(error);
+    alert("Duplicate failed: " + error.message);
+  }
+
+});
 card.appendChild(title);
 card.appendChild(categoryText);
 card.appendChild(openButton);
 card.appendChild(editSavedButton);
 card.appendChild(deleteButton);
-
+card.appendChild(renameButton);
+card.appendChild(duplicateButton);
 projectsContainer.appendChild(card);
 
     });
