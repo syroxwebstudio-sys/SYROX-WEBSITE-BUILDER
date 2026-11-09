@@ -1906,3 +1906,229 @@ footer {
     background: #080808;
   }
 }
+
+/* =====================================
+   SYROX - DEEP BLACK CYAN THEME
+===================================== */
+
+:root {
+  --main-bg: #0A0F14;
+  --sidebar-bg: #05090D;
+  --topbar-bg: #0D141C;
+  --card-bg: #111B24;
+  --hover-bg: #192631;
+  --primary: #22D3EE;
+  --secondary: #38BDF8;
+  --main-text: #FFFFFF;
+  --secondary-text: #B8C5D1;
+  --border-color: #263744;
+  --input-bg: #101820;
+  --success: #34D399;
+  --error: #FB7185;
+}
+
+/* Main background */
+body,
+.main-content {
+  background: var(--main-bg);
+  color: var(--main-text);
+}
+
+/* Sidebar */
+.sidebar {
+  background: var(--sidebar-bg);
+  color: var(--main-text);
+  border-right: 1px solid var(--border-color);
+}
+
+.sidebar-logo {
+  color: var(--main-text);
+}
+
+.sidebar-profile {
+  border-color: var(--border-color);
+}
+
+.sidebar-nav a {
+  color: var(--secondary-text);
+  transition: 0.2s ease;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+  background: var(--hover-bg);
+  color: var(--primary);
+}
+
+/* Topbar */
+.topbar {
+  background: var(--topbar-bg);
+  color: var(--main-text);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--main-text);
+}
+
+/* Text */
+p, label, span {
+  color: var(--secondary-text);
+}
+
+/* Dashboard welcome */
+.dashboard-welcome {
+  background: linear-gradient(135deg, #111B24, #0A0F14);
+  border: 1px solid var(--border-color);
+  color: var(--main-text);
+}
+
+/* Statistics cards */
+.stats-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: none;
+  transition: 0.25s ease;
+}
+
+.stats-card:hover {
+  background: var(--hover-bg);
+  border-color: var(--primary);
+  transform: translateY(-3px);
+}
+
+.stats-card h2 {
+  color: var(--primary);
+}
+
+.stats-card p,
+.stats-card span {
+  color: var(--secondary-text);
+}
+
+.stats-icon {
+  background: #172B38;
+  color: var(--secondary);
+}
+
+/* Project cards */
+.project-card {
+  background: var(--card-bg);
+  color: var(--main-text);
+  border: 1px solid var(--border-color);
+}
+
+.project-card:hover {
+  background: var(--hover-bg);
+  border-color: var(--secondary);
+}
+
+/* Builder and About sections */
+.builder-area,
+.about-section {
+  background: var(--card-bg);
+  color: var(--main-text);
+  border: 1px solid var(--border-color);
+}
+
+/* Section headings */
+.section-heading,
+.section-label {
+  color: var(--secondary);
+}
+
+/* Inputs */
+input,
+textarea,
+select {
+  background: var(--input-bg);
+  color: var(--main-text);
+  border: 1px solid var(--border-color);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #81909D;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* Buttons */
+button,
+.start-button {
+  background: var(--primary);
+  color: #061116;
+  border: 1px solid var(--primary);
+  transition: 0.2s ease;
+}
+
+button:hover,
+.start-button:hover {
+  background: var(--secondary);
+  border-color: var(--secondary);
+}
+
+/* Disabled buttons */
+button:disabled {
+  background: #263744;
+  color: #81909D;
+  border-color: #263744;
+}
+
+/* Preview frame */
+#website-preview {
+  background: #FFFFFF;
+  border: 1px solid var(--border-color);
+}
+
+/* Download controls */
+.download-controls {
+  background: transparent;
+}
+
+/* Links */
+a {
+  color: var(--secondary);
+}
+
+a:hover {
+  color: var(--primary);
+}
+
+/* Borders */
+hr {
+  border-color: var(--border-color);
+}
+
+/* Status messages */
+#status {
+  color: var(--secondary);
+}
+
+/* Footer */
+footer {
+  background: var(--main-bg);
+  color: var(--secondary-text);
+  border-top: 1px solid var(--border-color);
+}
+
+/* Mobile */
+@media (max-width: 750px) {
+  .sidebar {
+    background: var(--sidebar-bg);
+  }
+
+  .main-content {
+    background: var(--main-bg);
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
