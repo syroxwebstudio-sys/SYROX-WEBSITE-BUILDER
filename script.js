@@ -640,4 +640,4 @@ function setupTemplates() {
 
 }
 
-setupTemplates();
+document.addEventListener("DOMContentLoaded", setupTemplates);
