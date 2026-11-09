@@ -604,3 +604,21 @@ saveProjectButton.addEventListener("click", async function () {
   }
 
 });
+  // WEBSITE TEMPLATE SELECTION
+
+window.selectTemplate = function(templateName) {
+
+  const ideaInput = document.getElementById("idea");
+
+  ideaInput.value =
+    "Create a professional, modern and responsive " +
+    templateName +
+    " with premium design, attractive layout and beautiful sections.";
+
+  document.getElementById("builder").scrollIntoView({
+    behavior: "smooth"
+  });
+
+  document.getElementById("status").textContent =
+    templateName + " selected! Click Generate Website.";
+};
