@@ -4,15 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SYROX Web Studio</title>
-  <link rel="stylesheet" href="style.css?v=7">
+  <meta name="theme-color" content="#101719">
+  <title>SYROX Web Studio | AI Website Builder</title>
+  <link rel="stylesheet" href="style.css?v=8">
 </head>
 
 <body>
 
 <div class="app-layout">
 
-  <!-- LEFT SIDEBAR -->
+  <!-- SIDEBAR -->
   <aside class="sidebar">
 
     <div class="sidebar-logo">
@@ -27,7 +28,7 @@
       </div>
     </div>
 
-    <p class="sidebar-label">MENU</p>
+    <p class="sidebar-label">WORKSPACE</p>
 
     <nav class="sidebar-nav">
       <a href="#home">⌂ <span>Dashboard</span></a>
@@ -42,19 +43,19 @@
         Logout
       </button>
       <p>SYROX WEB STUDIO</p>
-      <span>Build something amazing.</span>
+      <span>Beyond Technology. Beyond Limits.</span>
     </div>
 
   </aside>
 
 
   <!-- MAIN CONTENT -->
-  <div class="main-content">
+  <main class="main-content">
 
-    <!-- TOP BAR -->
+    <!-- TOPBAR -->
     <header class="topbar">
       <div>
-        <p class="topbar-small">WELCOME TO</p>
+        <p class="topbar-small">AI POWERED PLATFORM</p>
         <h2>SYROX Web Studio</h2>
       </div>
 
@@ -65,49 +66,65 @@
       </div>
     </header>
 
-<!-- SYROX DASHBOARD STATISTICS -->
-
-<section class="stats-grid">
-
-  <div class="stats-card">
-    <div class="stats-icon">▣</div>
-    <p>Total Projects</p>
-    <h2 id="stats-total-projects">0</h2>
-    <span>Your saved projects</span>
-  </div>
-
-  <div class="stats-card">
-    <div class="stats-icon">✦</div>
-    <p>Websites Created</p>
-    <h2 id="stats-websites-created">0</h2>
-    <span>Saved generated websites</span>
-  </div>
-
-  <div class="stats-card">
-    <div class="stats-icon">⚡</div>
-    <p>AI Website Builder</p>
-    <h2 class="stats-ready">READY</h2>
-    <span>AI workspace status</span>
-  </div>
-
-</section>
-
 
     <!-- DASHBOARD -->
     <section id="home" class="dashboard-welcome">
-      <div>
-        <p class="tag">AI WEBSITE CREATION PLATFORM</p>
-        <h1>Build Your Ideas<br>
-          <span>Into Reality.</span>
+
+      <div class="welcome-content">
+        <p class="tag">✦ YOUR AI CREATION WORKSPACE</p>
+
+        <h1>
+          Turn Your Ideas<br>
+          Into <span>Reality.</span>
         </h1>
+
         <p class="description">
-          Create professional websites with the power of AI.
-          No coding skills required.
+          Create stunning, professional websites with the power
+          of artificial intelligence. No coding skills required.
         </p>
+
         <a class="start-button" href="#builder">
-          Start Creating
+          Start Creating <span>→</span>
         </a>
       </div>
+
+      <div class="welcome-visual">
+        <div class="visual-orbit">
+          <div class="visual-center">S</div>
+          <div class="orbit-dot orbit-dot-one"></div>
+          <div class="orbit-dot orbit-dot-two"></div>
+          <div class="orbit-dot orbit-dot-three"></div>
+        </div>
+        <p>AI WEBSITE GENERATOR</p>
+      </div>
+
+    </section>
+
+
+    <!-- STATISTICS -->
+    <section class="stats-grid">
+
+      <div class="stats-card">
+        <div class="stats-icon">▣</div>
+        <p>Total Projects</p>
+        <h2 id="stats-total-projects">0</h2>
+        <span>Your saved projects</span>
+      </div>
+
+      <div class="stats-card">
+        <div class="stats-icon">✦</div>
+        <p>Websites Created</p>
+        <h2 id="stats-websites-created">0</h2>
+        <span>Saved generated websites</span>
+      </div>
+
+      <div class="stats-card">
+        <div class="stats-icon">⚡</div>
+        <p>AI Website Builder</p>
+        <h2 class="stats-ready">READY</h2>
+        <span>AI workspace status</span>
+      </div>
+
     </section>
 
 
@@ -118,7 +135,7 @@
         <div>
           <p class="section-label">YOUR WORKSPACE</p>
           <h2>My Projects</h2>
-          <p>Manage your saved websites in one place.</p>
+          <p>Manage and access your saved websites.</p>
         </div>
       </div>
 
@@ -131,62 +148,84 @@
     </section>
 
 
-    <!-- AI BUILDER -->
+    <!-- AI WEBSITE BUILDER -->
     <section id="builder" class="builder-area">
 
       <div class="section-heading">
-        <p class="section-label">CREATE WITH AI</p>
+        <p class="section-label">✦ CREATE WITH AI</p>
         <h2>AI Website Builder</h2>
-        <p>Describe your idea. Let SYROX AI build your website.</p>
+        <p>Describe your vision. Let SYROX AI bring it to life.</p>
       </div>
 
       <div class="builder-box">
 
-        <h2>What website do you want to create?</h2>
+        <div class="builder-box-heading">
+          <span class="builder-step">01</span>
+          <div>
+            <h2>Describe Your Website</h2>
+            <p>Tell us what you want to create.</p>
+          </div>
+        </div>
 
         <textarea
           id="idea"
-          placeholder="Describe your website idea...">
-        </textarea>
+          placeholder="Example: Create a premium website for a digital marketing agency..."
+        ></textarea>
 
         <div class="design-controls">
 
-          <h3>Customize Your Design</h3>
+          <div class="builder-box-heading">
+            <span class="builder-step">02</span>
+            <div>
+              <h3>Customize Your Design</h3>
+              <p>Choose your preferred website style.</p>
+            </div>
+          </div>
 
-          <label for="category">Website Category</label>
-          <select id="category">
-            <option value="Business">Business</option>
-            <option value="Portfolio">Portfolio</option>
-            <option value="Restaurant">Restaurant</option>
-            <option value="E-commerce">E-commerce</option>
-            <option value="Education">Education</option>
-            <option value="Blog">Blog</option>
-            <option value="Landing Page">Landing Page</option>
-          </select>
+          <div class="design-grid">
 
-          <label for="design-style">Design Style</label>
-          <select id="design-style">
-            <option value="Modern">Modern</option>
-            <option value="Luxury">Luxury</option>
-            <option value="Minimal">Minimal</option>
-            <option value="Corporate">Corporate</option>
-            <option value="Creative">Creative</option>
-          </select>
+            <div class="design-field">
+              <label for="category">Website Category</label>
+              <select id="category">
+                <option value="Business">Business</option>
+                <option value="Portfolio">Portfolio</option>
+                <option value="Restaurant">Restaurant</option>
+                <option value="E-commerce">E-commerce</option>
+                <option value="Education">Education</option>
+                <option value="Blog">Blog</option>
+                <option value="Landing Page">Landing Page</option>
+              </select>
+            </div>
 
-          <label for="color-theme">Color Theme</label>
-          <select id="color-theme">
-            <option value="Blue and White">Blue and White</option>
-            <option value="Black and Gold">Black and Gold</option>
-            <option value="Dark Cyber">Dark Cyber</option>
-            <option value="Purple Gradient">Purple Gradient</option>
-            <option value="Green and White">Green and White</option>
-            <option value="Choose suitable colors">AI Choose Colors</option>
-          </select>
+            <div class="design-field">
+              <label for="design-style">Design Style</label>
+              <select id="design-style">
+                <option value="Modern">Modern</option>
+                <option value="Luxury">Luxury</option>
+                <option value="Minimal">Minimal</option>
+                <option value="Corporate">Corporate</option>
+                <option value="Creative">Creative</option>
+              </select>
+            </div>
+
+            <div class="design-field">
+              <label for="color-theme">Color Theme</label>
+              <select id="color-theme">
+                <option value="Blue and White">Blue and White</option>
+                <option value="Black and Gold">Black and Gold</option>
+                <option value="Dark Cyber">Dark Cyber</option>
+                <option value="Purple Gradient">Purple Gradient</option>
+                <option value="Green and White">Green and White</option>
+                <option value="Choose suitable colors">AI Choose Colors</option>
+              </select>
+            </div>
+
+          </div>
 
         </div>
 
-        <button id="generate">
-          Generate Website
+        <button id="generate" class="primary-button">
+          ✦ Generate Website
         </button>
 
         <p id="status">Free preview available</p>
@@ -201,34 +240,46 @@
 
       <div class="section-heading">
         <p class="section-label">LIVE WORKSPACE</p>
-        <h2>Your Website Preview</h2>
-        <p>Your generated website will appear here.</p>
+        <h2>Website Preview</h2>
+        <p>See your generated website before downloading.</p>
       </div>
 
-      <div class="preview-controls">
-        <button id="desktop-view" class="active">Desktop</button>
-        <button id="tablet-view">Tablet</button>
-        <button id="mobile-view">Mobile</button>
-      </div>
+      <div class="preview-panel">
 
-      <iframe
-        id="website-preview"
-        title="Generated Website Preview"
-        sandbox="">
-      </iframe>
+        <div class="preview-toolbar">
+          <div class="preview-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <div class="preview-controls">
+            <button id="desktop-view" class="active">Desktop</button>
+            <button id="tablet-view">Tablet</button>
+            <button id="mobile-view">Mobile</button>
+          </div>
+        </div>
+
+        <iframe
+          id="website-preview"
+          title="Generated Website Preview"
+          sandbox="">
+        </iframe>
+
+      </div>
 
       <div class="download-controls">
 
         <button id="download-website" disabled>
-          Download Website
+          ↓ Download Website
         </button>
 
         <button id="download-zip" disabled>
-          Download ZIP
+          ↓ Download ZIP
         </button>
 
         <button id="save-project" disabled>
-          Save Project
+          ♡ Save Project
         </button>
 
       </div>
@@ -239,43 +290,61 @@
     <!-- AI EDITOR -->
     <section class="ai-edit-box">
 
-      <p class="section-label">MAKE CHANGES WITH AI</p>
-      <h2>AI Website Editor</h2>
+      <div class="section-heading">
+        <p class="section-label">✦ AI POWERED EDITING</p>
+        <h2>AI Website Editor</h2>
+        <p>Improve your website by simply describing the changes.</p>
+      </div>
 
-      <p>Tell SYROX AI what changes you want.</p>
+      <div class="editor-panel">
 
-      <textarea
-        id="edit-prompt"
-        placeholder="Example: Change the background to black...">
-      </textarea>
+        <div class="builder-box-heading">
+          <span class="builder-step">03</span>
+          <div>
+            <h3>What would you like to change?</h3>
+            <p>Give SYROX AI your editing instructions.</p>
+          </div>
+        </div>
 
-      <button id="edit-website">
-        Edit Website
-      </button>
+        <textarea
+          id="edit-prompt"
+          placeholder="Example: Change the background to dark green and make the heading larger..."
+        ></textarea>
+
+        <button id="edit-website" class="primary-button">
+          ✦ Edit Website
+        </button>
+
+      </div>
 
     </section>
 
 
     <!-- ABOUT -->
     <section id="about" class="about-section">
-      <p class="section-label">ABOUT US</p>
-      <h2>About SYROX Web Studio</h2>
+
+      <p class="section-label">ABOUT OUR PLATFORM</p>
+
+      <h2>Meet SYROX Web Studio</h2>
+
       <p>
         Your business deserves a better website.
-        Build professional websites faster with AI.
+        Create professional websites faster with the power of AI.
       </p>
+
       <strong>Beyond Technology. Beyond Limits.</strong>
+
     </section>
 
 
     <!-- FOOTER -->
     <footer>
-      © 2026 SYROX Web Studio
-      <br>
-      Built for a smarter tomorrow.
+      <strong>SYROX WEB STUDIO</strong>
+      <p>© 2026 SYROX Web Studio. All rights reserved.</p>
+      <span>Built for a smarter tomorrow.</span>
     </footer>
 
-  </div>
+  </main>
 
 </div>
 
