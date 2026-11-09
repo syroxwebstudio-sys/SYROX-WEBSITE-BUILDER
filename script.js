@@ -424,14 +424,53 @@ async function loadProjects() {
 totalProjectsCount.textContent = snapshot.size;
 websitesCreatedCount.textContent = snapshot.size;
     projectsContainer.innerHTML = "";
+const searchTerm = projectSearch.value.toLowerCase().trim();
+const selectedCategory = projectFilter.value;
 
+const filteredProjects = [];
+
+if (filteredProjects.length === 0) {
+  projectsContainer.textContent = "No matching projects found.";
+  return;
+}
+
+filteredProjects.forEach((savedProject) => {
+
+  const projectDoc = { id: savedProject.id };
+  const project = savedProject.data;
+
+
+  const projectName = (project.projectName || "").toLowerCase();
+  const projectCategory = project.category || "";
+
+  const matchesSearch = projectName.includes(searchTerm);
+
+  const matchesCategory =
+    selectedCategory === "all" ||
+    projectCategory.toLowerCase() === selectedCategory.toLowerCase();
+
+  if (matchesSearch && matchesCategory) {
+    filteredProjects.push({
+      id: projectDoc.id,
+      data: project
+    });
+  }
+});
     if (snapshot.empty) {
       projectsContainer.textContent =
         "No saved projects yet.";
       return;
     }
 
-    snapshot.forEach((projectDoc) => {
+    if (filteredProjects.length === 0) {
+  projectsContainer.textContent = "No matching projects found.";
+  return;
+}
+
+filteredProjects.forEach((savedProject) => {
+
+  const projectDoc = { id: savedProject.id };
+  const project = savedProject.data;
 
       const project = projectDoc.data();
 
@@ -605,6 +644,18 @@ projectsContainer.appendChild(card);
 
   }
 }
+// PROJECT SEARCH
+
+projectSearch.addEventListener("input", () => {
+  loadProjects();
+});
+
+
+// PROJECT CATEGORY FILTER
+
+projectFilter.addEventListener("change", () => {
+  loadProjects();
+});
 // Check Login Status
 onAuthStateChanged(auth, (user) => {
 
