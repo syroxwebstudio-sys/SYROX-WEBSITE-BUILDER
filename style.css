@@ -2132,3 +2132,236 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* =========================================
+   SYROX PREMIUM DEEP TEAL THEME
+========================================= */
+
+:root {
+  --main-bg: #101719;
+  --sidebar-bg: #0A1212;
+  --topbar-bg: #111C1B;
+  --section-bg: #14201F;
+  --card-bg: #192725;
+  --builder-bg: #203633;
+  --hover-bg: #29413D;
+  --accent: #2DD4BF;
+  --accent-light: #5EEAD4;
+  --main-text: #FFFFFF;
+  --secondary-text: #B7CBC6;
+  --border-color: #29413D;
+  --input-bg: #101C1A;
+}
+
+/* Main background */
+html,
+body {
+  background: var(--main-bg) !important;
+  color: var(--main-text);
+}
+
+/* Main content */
+.main-content {
+  background: var(--main-bg) !important;
+  color: var(--main-text);
+}
+
+/* Sidebar */
+.sidebar {
+  background: var(--sidebar-bg) !important;
+  color: var(--main-text);
+  border-right: 1px solid var(--border-color);
+}
+
+.sidebar-logo {
+  color: var(--main-text);
+}
+
+.sidebar-profile {
+  border-color: var(--border-color);
+}
+
+.sidebar-nav a {
+  color: var(--secondary-text);
+  transition: 0.2s ease;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+  background: var(--hover-bg);
+  color: var(--accent);
+}
+
+/* Topbar */
+.topbar {
+  background: var(--topbar-bg) !important;
+  color: var(--main-text);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Large dashboard sections */
+.dashboard-welcome,
+#dashboard,
+#home,
+#builder,
+#preview-section,
+#about {
+  background: var(--section-bg);
+  color: var(--main-text);
+  border-color: var(--border-color);
+}
+
+/* Cards */
+.stats-card,
+.project-card {
+  background: var(--card-bg) !important;
+  color: var(--main-text);
+  border: 1px solid var(--border-color);
+  box-shadow: none;
+  transition: 0.25s ease;
+}
+
+.stats-card:hover,
+.project-card:hover {
+  background: var(--hover-bg) !important;
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+/* Builder and About boxes */
+.builder-area,
+.about-section {
+  background: var(--builder-bg) !important;
+  color: var(--main-text);
+  border: 1px solid var(--border-color);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--main-text);
+}
+
+/* General text */
+p, label, span {
+  color: var(--secondary-text);
+}
+
+/* Statistics */
+.stats-card h2 {
+  color: var(--accent);
+}
+
+.stats-icon {
+  background: #203D38;
+  color: var(--accent);
+}
+
+/* Inputs */
+input,
+textarea,
+select {
+  background: var(--input-bg) !important;
+  color: var(--main-text) !important;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #91AAA3;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* Buttons */
+button,
+.start-button {
+  background: var(--accent);
+  color: #06201D;
+  border: 1px solid var(--accent);
+  transition: 0.2s ease;
+}
+
+button:hover,
+.start-button:hover {
+  background: var(--accent-light);
+  border-color: var(--accent-light);
+}
+
+/* Disabled buttons */
+button:disabled {
+  background: #29413D;
+  color: #91AAA3;
+  border-color: #29413D;
+}
+
+/* Links */
+a {
+  color: var(--accent);
+}
+
+a:hover {
+  color: var(--accent-light);
+}
+
+/* Section headings */
+.section-heading,
+.section-label {
+  color: var(--accent);
+}
+
+/* Dividers and borders */
+hr {
+  border-color: var(--border-color);
+}
+
+section,
+.card,
+header {
+  border-color: var(--border-color);
+}
+
+/* Status */
+#status {
+  color: var(--accent);
+}
+
+/* Website Preview - keep generated website white */
+#website-preview {
+  background: #FFFFFF !important;
+  color: #000000;
+  border: 1px solid var(--border-color);
+}
+
+/* Download controls */
+.download-controls {
+  background: transparent;
+}
+
+/* Footer */
+footer {
+  background: var(--sidebar-bg);
+  color: var(--secondary-text);
+  border-top: 1px solid var(--border-color);
+}
+
+/* Mobile */
+@media (max-width: 750px) {
+  .sidebar {
+    background: var(--sidebar-bg) !important;
+  }
+
+  .main-content {
+    background: var(--main-bg) !important;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
