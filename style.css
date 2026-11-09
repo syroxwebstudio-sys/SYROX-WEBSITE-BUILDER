@@ -35,10 +35,18 @@ html {
 }
 
 body {
-  background: var(--bg);
-  color: var(--white);
-  font-family: Inter, "Segoe UI", Arial, sans-serif;
-  line-height: 1.6;
+ html, body {
+  background: #101719 !important;
+  color: #FFFFFF;
+}
+
+.app-layout {
+  background: #101719 !important;
+}
+
+.main-content {
+  background: #14201F !important;
+}
 }
 
 button, input, textarea, select {
