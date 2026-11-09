@@ -54,7 +54,11 @@ const saveProjectButton =
   document.getElementById("save-project");
 const projectsContainer =
   document.getElementById("projects-container");
+const projectSearch =
+  document.getElementById("project-search");
 
+const projectFilter =
+  document.getElementById("project-filter");
 const totalProjectsCount =
   document.getElementById("stats-total-projects");
 
