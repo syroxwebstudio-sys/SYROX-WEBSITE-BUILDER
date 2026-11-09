@@ -34,19 +34,21 @@ html {
   scroll-padding-top: 90px;
 }
 
-body {
- html, body {
-  background: #101719 !important;
+html, body {
+  background: #101719;
   color: #FFFFFF;
 }
 
+body {
+  min-height: 100vh;
+}
+
 .app-layout {
-  background: #101719 !important;
+  background: transparent;
 }
 
 .main-content {
-  background: #14201F !important;
-}
+  background: transparent;
 }
 
 button, input, textarea, select {
