@@ -1042,3 +1042,15 @@ footer span {
   }
 
 }
+.project-card button {
+  background: #2DD4BF;
+  color: #101719;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+.project-card button:hover {
+  background: #5EEAD4;
+}
