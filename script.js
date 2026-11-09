@@ -604,21 +604,28 @@ saveProjectButton.addEventListener("click", async function () {
   }
 
 });
-  // WEBSITE TEMPLATE SELECTION
+// WEBSITE TEMPLATE SELECTION
 
-window.selectTemplate = function(templateName) {
+document.querySelectorAll(".use-template").forEach(button => {
 
-  const ideaInput = document.getElementById("idea");
+  button.addEventListener("click", function() {
 
-  ideaInput.value =
-    "Create a professional, modern and responsive " +
-    templateName +
-    " with premium design, attractive layout and beautiful sections.";
+    const templateName = this.dataset.template;
 
-  document.getElementById("builder").scrollIntoView({
-    behavior: "smooth"
+    const ideaInput = document.getElementById("idea");
+
+    ideaInput.value =
+      "Create a professional, modern and responsive " +
+      templateName +
+      " with premium design, attractive layout and beautiful sections.";
+
+    document.getElementById("builder").scrollIntoView({
+      behavior: "smooth"
+    });
+
+    statusText.textContent =
+      templateName + " selected! Click Generate Website.";
+
   });
 
-  document.getElementById("status").textContent =
-    templateName + " selected! Click Generate Website.";
-};
+});
