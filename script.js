@@ -604,28 +604,40 @@ saveProjectButton.addEventListener("click", async function () {
   }
 
 });
+
 // WEBSITE TEMPLATE SELECTION
 
-document.querySelectorAll(".use-template").forEach(button => {
+function setupTemplates() {
 
-  button.addEventListener("click", function() {
+  const templateButtons =
+    document.querySelectorAll(".use-template");
 
-    const templateName = this.dataset.template;
+  templateButtons.forEach(button => {
 
-    const ideaInput = document.getElementById("idea");
+    button.onclick = function() {
 
-    ideaInput.value =
-      "Create a professional, modern and responsive " +
-      templateName +
-      " with premium design, attractive layout and beautiful sections.";
+      const templateName = button.dataset.template;
 
-    document.getElementById("builder").scrollIntoView({
-      behavior: "smooth"
-    });
+      const ideaInput = document.getElementById("idea");
+      const builder = document.getElementById("builder");
+      const status = document.getElementById("status");
 
-    statusText.textContent =
-      templateName + " selected! Click Generate Website.";
+      ideaInput.value =
+        "Create a professional and responsive " +
+        templateName +
+        " with premium design, modern layout and beautiful sections.";
+
+      builder.scrollIntoView({
+        behavior: "smooth"
+      });
+
+      status.textContent =
+        templateName + " selected! Click Generate Website.";
+
+    };
 
   });
 
-});
+}
+
+setupTemplates();
