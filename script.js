@@ -35,11 +35,14 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 
-// FIRESTORE
-const db = getFirestore(app);
+// FIREBASE INITIALIZATION
 const firebaseApp = initializeApp(firebaseConfig);
+
+// FIREBASE AUTH
 const auth = getAuth(firebaseApp);
 const googleProvider = new GoogleAuthProvider();
+
+// FIRESTORE
 const db = getFirestore(firebaseApp);
 
 const API_URL =
